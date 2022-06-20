@@ -14,6 +14,7 @@ const answers = {
 };
 
 let score = 0;
+let questionNumber = 1;
 
 let play = (userInput) => {
     let input = userInput.toString().trim();
@@ -25,10 +26,10 @@ let game = (input) => {
     process.stdout.write(`Thanks for playing!\nHere is your score: ${score}`);
     process.exit();
   } else {
-    process.stdout.write(questions[1]);
-    if (input === answers[1]) {
+    process.stdout.write(`${questions[questionNumber]} > `);
+    if (input === answers[questionNumber]) {
       score++;
-      process.stdout.write("> Correct!\n");
+      process.stdout.write(`> Correct!\n Your score is: ${score}`);
       process.exit();
     }
   }
