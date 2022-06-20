@@ -23,9 +23,13 @@ let play = (userInput) => {
 
 let game = (input) => {
   if (input === "q") {
-    process.stdout.write(`Thanks for playing!\nHere is your score: ${score}`);
+    process.stdout.write(`Thanks!`);
     process.exit();
   } else {
+    if (questionNumber === 5) {
+        process.stdout.write(`Thanks for playing!`);
+        process.exit();
+    }
     process.stdout.write(`${questions[questionNumber]} > `);
     if (input === answers[questionNumber]) {
       score++;
