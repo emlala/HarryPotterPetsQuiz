@@ -13,35 +13,30 @@ const answers = {
   4: "Fluffy",
 };
 
-let score = 0
-/* let play = (userInput) => {
-  process.stdout.write("Welcome to the Harry Potter Pet quiz! \n");
+let score = 0;
 
+let play = (userInput) => {
+    let input = userInput.toString().trim();
+    game(input);
+  };
 
-  process.stdout.write("Do you want to play? Write 'yes' or 'no' ");
-  let input = userInput.toString().trim();
-
-  if (input === "no") {
-    process.stdout.write("> Game over!\n");
+let game = (input) => {
+  if (input === "q") {
+    process.stdout.write(`Thanks for playing!\nHere is your score: ${score}`);
     process.exit();
+  } else {
+    process.stdout.write(questions[1]);
+    if (input === answers[1]) {
+      score++;
+      process.stdout.write("> Correct!\n");
+      process.exit();
+    }
   }
-} */
+};
 
-let game = (userInput) => {
-    let input = userInput.toString().trim()
-        process.stdout.write("> Let's play! To exit the game press q\n");
-            process.stdout.write(questions[1])
-                if (input === "q") {
-                    process.stdout.write(
-                    `Thanks for playing!\n Here is your score: ${score}`
-                    )
-                }
-                if (input === answers[1]) { 
-                    score++
-                    process.stdout.write("> Correct!\n")
-                }
-        console.log(score)
-    process.exit()
-}
+// starting the game
+process.stdout.write(
+  "Welcome to the Harry Potter Pet quiz! \nIf you want to play, press p. If not, press q.\n"
+);
 
-process.stdin.on("data", game)
+process.stdin.on("data", play);
