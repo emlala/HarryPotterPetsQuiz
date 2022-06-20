@@ -13,34 +13,37 @@ const answers = {
   4: "Fluffy",
 };
 
-console.log(questions[1]);
-console.log(answers[1]);
+let score = 0;
 
-let game = (userInput) => {
-  process.stdout.write("Welcome to the Harry Potter Pet quiz! \n");
+let game = (input) => {
+  process.stdout.write("> Let's play! To exit the game press q\n");
+  process.stdout.write(questions[1]);
+  if (input === "q") {
+    process.stdout.write(`Thanks for playing!\nHere is your score: ${score}`);
+    process.exit();
+  }
 
-  let score = 0;
+  if (input === answers[1]) {
+    score++;
+    process.stdout.write("> Correct!\n");
+    process.exit();
+  }
+};
 
-  process.stdout.write("Do you want to play? Write 'yes' or 'no'");
+let play = (userInput) => {
   let input = userInput.toString().trim();
 
   if (input === "no") {
     process.stdout.write("> Game over!\n");
     process.exit();
-  }
-
-  if (input === "yes") {
-    while (true) {
-      let input = userInput.toString().trim();
-
-      if (input === "q") {
-        process.stdout.write(
-          `Thanks for playing!\n Here is your score: ${score}`
-        );
-        process.exit();
-      }
-    }
+  } else {
+    game(input);
   }
 };
 
-process.stdin.on("data", game);
+// starting the game
+process.stdout.write(
+  "Welcome to the Harry Potter Pet quiz! \nDo you want to play? Write 'yes' or 'no'\n"
+);
+
+process.stdin.on("data", play);
