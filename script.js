@@ -22,23 +22,23 @@ let game = (input) => {
   if (input === "q") {
     process.stdout.write(`Thanks!`);
     process.exit();
-  } else {
+  } else if (input === answers[questionNumber]) {
+    score++;
+    process.stdout.write(`> Correct!\n> Your score is: ${score} \n`);
+    questionNumber++;
+
     if (questionNumber === 5) {
-      process.stdout.write(`Thanks for playing!`);
+      process.stdout.write(`> Thanks for playing!`);
       process.exit();
     }
-    process.stdout.write(`${questions[questionNumber]} > `);
-    if (input === answers[questionNumber]) {
-      score++;
-      process.stdout.write(`> Correct!\n Your score is: ${score}`);
-      questionNumber++;
-    }
   }
+  process.stdout.write(`> ${questions[questionNumber]}\n> `);
 };
 
 // starting the game
 process.stdout.write(
   "Welcome to the Harry Potter Pet quiz! \nIf you want to play, press p. If not, press q.\n"
 );
+//process.stdout.write(`${questions[questionNumber]} > `);
 
 process.stdin.on("data", game);
