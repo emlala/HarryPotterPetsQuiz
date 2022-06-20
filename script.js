@@ -1,3 +1,11 @@
-console.log("Welcome to the Harry Potter Pet quiz!");
+process.stdout.write("Welcome to the Harry Potter Pet quiz!");
 
-console.log("Hello")
+var score = 0
+
+while (true) {
+    let input = userInput.toString().trim()
+    if (input === "q") {
+        process.stdout.write(`Thanks for playing!\n Here is your score: ${score}`)
+        return
+    }
+}
