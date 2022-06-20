@@ -1,6 +1,6 @@
 process.stdout.write("Welcome to the Harry Potter Pet quiz!");
 
-var score = 0
+let score = 0
 
 while (true) {
     let input = userInput.toString().trim()
