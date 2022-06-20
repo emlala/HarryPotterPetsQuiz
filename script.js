@@ -16,14 +16,11 @@ const answers = {
 let score = 0;
 
 let game = (input) => {
-  process.stdout.write("> Let's play! To exit the game press q\n");
   process.stdout.write(questions[1]);
   if (input === "q") {
     process.stdout.write(`Thanks for playing!\nHere is your score: ${score}`);
     process.exit();
-  }
-
-  if (input === answers[1]) {
+  } else if (input === answers[1]) {
     score++;
     process.stdout.write("> Correct!\n");
     process.exit();
@@ -36,7 +33,8 @@ let play = (userInput) => {
   if (input === "no") {
     process.stdout.write("> Game over!\n");
     process.exit();
-  } else {
+  } else if (input === "yes") {
+    process.stdout.write("> Let's play! To exit the game press q\n");
     game(input);
   }
 };
