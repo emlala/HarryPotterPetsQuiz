@@ -30,7 +30,7 @@ let game = (input) => {
     if (input === answers[questionNumber]) {
       score++;
       process.stdout.write(`> Correct!\n Your score is: ${score}`);
-      process.exit();
+      questionNumber++;
     }
   }
 };
